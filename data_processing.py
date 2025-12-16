@@ -82,5 +82,33 @@ plt.yticks(np.arange(len(correlation_cols)), correlation_cols)
 plt.savefig(f'{output_dir}/correlation_heatmap.png', dpi=300, bbox_inches='tight')
 plt.close()
 
+# 6. 合并技术指标可视化 (RSI和CCI)
+fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(12, 10), sharex=True)
+
+# RSI指标
+ax1.plot(data['rsi_7'], label='RSI 7')
+ax1.plot(data['rsi_14'], label='RSI 14')
+ax1.axhline(y=70, color='r', linestyle='--', label='超买线')
+ax1.axhline(y=30, color='g', linestyle='--', label='超卖线')
+ax1.set_title('Netflix RSI指标 (2014-2023)')
+ax1.set_ylabel('RSI值')
+ax1.legend()
+ax1.grid(True)
+
+# CCI指标
+ax2.plot(data['cci_7'], label='CCI 7')
+ax2.plot(data['cci_14'], label='CCI 14')
+ax2.axhline(y=100, color='r', linestyle='--', label='超买线')
+ax2.axhline(y=-100, color='g', linestyle='--', label='超卖线')
+ax2.set_title('Netflix CCI指标 (2014-2023)')
+ax2.set_xlabel('日期')
+ax2.set_ylabel('CCI值')
+ax2.legend()
+ax2.grid(True)
+
+plt.tight_layout()
+plt.savefig(f'{output_dir}/technical_indicators.png', dpi=300, bbox_inches='tight')
+plt.close()
+
 print('数据处理完成！')
 print(f'可视化图表已保存到 {output_dir} 文件夹')

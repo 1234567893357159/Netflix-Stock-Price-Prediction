@@ -139,7 +139,7 @@ plt.title('预测误差分布直方图')
 plt.xlabel('误差 ($)')
 plt.ylabel('频数')
 plt.grid(True)
-plt.savefig(f'{output_dir}/error_distribution.png', dpi=300, bbox_inches='tight')
+plt.savefig(f'{output_dir}/prediction_error.png', dpi=300, bbox_inches='tight')
 plt.close()
 
 # 保存预测结果到CSV文件
